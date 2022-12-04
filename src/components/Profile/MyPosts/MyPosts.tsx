@@ -1,8 +1,19 @@
 import React from "react";
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
+import {postType} from '../../../redux/state'
 
-const MyPosts = () => {
+
+type MyPostsPropsType={
+    posts: postType[]
+}
+
+const MyPosts= (props: MyPostsPropsType) => {
+
+
+    let postsDataMap = props.posts.map(el=>
+    <Post message={el.message} like={el.like}/>)
+
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
@@ -11,12 +22,9 @@ const MyPosts = () => {
                 <div>
                     <button>Add post</button>
                 </div>
-
-
             </div>
             <div className={s.posts}>
-                <Post message={"Hi, how are you"} like={15}/>
-                <Post message={"This is my first post"} like={20}/>
+                {postsDataMap}
             </div>
         </div>
     )
