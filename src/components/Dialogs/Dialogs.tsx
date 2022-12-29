@@ -10,6 +10,12 @@ type DialogsPropsType={
 
 export const Dialogs = (props:DialogsPropsType) => {
 
+    let newMessage = React.useRef<HTMLTextAreaElement | null>(null)
+
+    const  addNewMessage =()=>{
+        alert(newMessage.current?.value)
+    }
+
     let dialogsDataMap = props.messages.dialogs.map(el=>
     <Dialog id={el.id} name={el.name}/>
     )
@@ -24,7 +30,10 @@ export const Dialogs = (props:DialogsPropsType) => {
         </div>
         <div className={s.messages}>
             {messagesDataMap}
-
+        </div>
+        <div>
+            <textarea ref={newMessage}></textarea>
+            <button onClick={addNewMessage}>Send</button>
         </div>
     </div>
 }

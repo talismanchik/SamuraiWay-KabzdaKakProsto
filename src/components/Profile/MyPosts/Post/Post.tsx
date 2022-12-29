@@ -1,9 +1,11 @@
 import React from "react";
 import s from "./Post.module.css"
 
+
 type PostTypeProps = {
     message: string;
     like: number;
+
 }
 
 const Post = (props: PostTypeProps) => {
