@@ -1,7 +1,7 @@
 import {ActionsType, messagesPageType, messageType} from "./state";
 import {v1} from "uuid";
 
-export type AddMessageAT ={
+export type AddMessageAT = {
     type: 'ADD_MESSAGE'
 }
 export type UpdateNewMessageTextAT = {
@@ -9,11 +9,30 @@ export type UpdateNewMessageTextAT = {
     text: string
 }
 
-export const dialogsReducer = (state: messagesPageType, action: ActionsType): messagesPageType => {
+const initialState = {
+    messages: [
+        {id: v1(), message: 'Hi'},
+        {id: v1(), message: 'how are you'},
+        {id: v1(), message: 'Have a good day'},
+        {id: v1(), message: 'you are beautiful'}
+    ],
+    dialogs: [
+        {id: v1(), name: 'Sveta'},
+        {id: v1(), name: 'Max'},
+        {id: v1(), name: 'Pasha'},
+        {id: v1(), name: 'Vitya'},
+        {id: v1(), name: 'Petya'},
+        {id: v1(), name: 'Katya'},
+        {id: v1(), name: 'Dasha'}
+    ],
+    newMessage: '',
+}
+
+export const dialogsReducer = (state: messagesPageType = initialState, action: ActionsType): messagesPageType => {
 
     switch (action.type) {
         case 'ADD_MESSAGE':
-            const createMessageItem:messageType = {id: v1(), message:state.newMessage}
+            const createMessageItem: messageType = {id: v1(), message: state.newMessage}
             state.messages.push(createMessageItem)
             state.newMessage = ''
             return state

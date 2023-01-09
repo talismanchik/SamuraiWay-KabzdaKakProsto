@@ -9,7 +9,16 @@ export type UpdateNewPostTextAT = {
     text: string
 }
 
-export const profileReducer = (state: profilePageType, action: ActionsType): profilePageType => {
+const initialState = {
+    posts: [
+        {id: v1(), message: "Hi, how are you", like: 15},
+        {id: v1(), message: "This is my first post", like: 20},
+        {id: v1(), message: "This is my second post", like: 25}
+    ],
+    newPostText: '',
+}
+
+export const profileReducer = (state: profilePageType = initialState, action: ActionsType): profilePageType => {
 
     switch (action.type) {
         case 'ADD_POST':
