@@ -23,12 +23,7 @@ export type profilePageType = {
     posts: postType[],
     newPostText: string
 }
-export type sidebarType ={}
-export type stateType = {
-    profilePage: profilePageType
-    dialogsPage: messagesPageType
-    // sidebar: sidebarType
-}
+
 
 export type ActionsType = AddPostAT | UpdateNewPostTextAT | AddMessageAT | UpdateNewMessageTextAT
 // export let store = {
